@@ -24,8 +24,8 @@ public class BookDaoImpl implements BookDao {
 	public ArrayList<String> listBookName;
 	public BookDaoImpl() {
 		try {
-			Class.forName("oracle:jdbc:driver:OracleDriver");
-			con = DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.20:1521:EBS1228", "apps", "apps");
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			con = DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.20:1521:DBEBS12", "apps", "apps");
 		}
 		catch(ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
@@ -240,6 +240,7 @@ public class BookDaoImpl implements BookDao {
 	
 	public List<Integer> viewAllBookId(){
 		try {
+			listBookId = new ArrayList<>();
 			pstmt = con.prepareStatement("SELECT b_id FROM BOOK_2608");
 			result = pstmt.executeQuery();
 			while(result.next()) {
@@ -254,6 +255,7 @@ public class BookDaoImpl implements BookDao {
 	
 	public List<String> viewAllBookName(){
 		try {
+			listBookName = new ArrayList<>();
 			pstmt = con.prepareStatement("SELECT b_name FROM BOOK_2608");
 			result = pstmt.executeQuery();
 			while(result.next()) {

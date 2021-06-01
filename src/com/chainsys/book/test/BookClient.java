@@ -316,7 +316,6 @@ public class BookClient {
 					System.exit(0);
 					break;
 			}
-			scan.close();
 		}
 	}
 
